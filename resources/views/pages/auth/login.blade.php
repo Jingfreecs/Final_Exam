@@ -1,6 +1,6 @@
 @extends('layout.guest-layout') {{-- Only this one is needed --}}
 
-@section('title', 'Login - BM Music')
+@section('title', 'Login - NE Exchange Rate')
 @section('link', 'Sign up')
 
 @section('main-content')
