@@ -1,4 +1,4 @@
-@extends('guest-layout.blade.php')
+@extends('layout.guest-layout') {{-- Only this one is needed --}}
 
 @section('title', 'Login - BM Music')
 @section('link', 'Sign up')
