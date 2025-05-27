@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layout.guest-layout');
+Route::get('/login', function () {
+    return view('pages.auth.login');
 });
