@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthCortroller;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,5 +11,11 @@ Route::get('/login', function () {
 Route::get('/', [DashboardController::class, 'index'])
    ->name('dashboard.index');
 
-Route::get('/register', [AuthCortroller::class,'showRegistrationForm'])->name('register');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.index');
+Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
 
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard.index');

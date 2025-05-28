@@ -2,7 +2,7 @@
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <title>Registet</title>
         <style>
             body{
@@ -27,7 +27,7 @@
                 margin-bottom: 1rem;
             }
 
-            input{
+            input, select{
                 width: 100%;
                 padding: 10px;
                 margin-bottom: 1rem;
@@ -53,10 +53,10 @@
             </style>
     </head>
     <body>
-        <form action="registration" method="post">
+        <form action="{{route('register.submit')}}" method="post">
             <h2>Register</h2>
             <input type="text" name="first_name" placeholder="First Name" required>
-            <input type="text" name="surname" placeholder="Surname" required>" required>
+            <input type="text" name="surname" placeholder="Surname" required>
             <input type="date" name="date_of_birth" required>
             <select name="gender" required>
                 <option value="">Select Gender</option>
@@ -66,6 +66,7 @@
             </select>
             <input type="tel" name="mobile_number" placeholder="Mobile Number" required>
             <input type="pasword" name="password" placeholder="Password" required>
+            <input type="pasword" name="password_confirmation" placeholder="Confirm Password" required>
             <input type="submit">Sign Up</button>
         </form>
     </body>
