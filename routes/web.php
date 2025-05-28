@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthCortroller;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,4 +10,6 @@ Route::get('/login', function () {
 
 Route::get('/', [DashboardController::class, 'index'])
    ->name('dashboard.index');
+
+Route::get('/register', [AuthCortroller::class,'showRegistrationForm'])->name('register');
 
