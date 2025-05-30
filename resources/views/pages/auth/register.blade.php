@@ -1,45 +1,55 @@
-@extends('layout.guest-layout') {{-- Only this one is needed --}}
+@extends('layout.guest-layout')
 
-@section('title', 'Login - NE Exchange Rate')
-@section('link', 'Sign up')
+@section('title', 'Register - NE Exchange Rate')
+
+@section('link', 'Sign in')
 
 @section('main-content')
-    <div class="col-11 col-sm-8 col-md-6 col-lg-4">
-        <div class="card shadow-lg border-0 rounded-4" style="background-color: rgba(255, 255, 255, 0.9);">
-            <div class="card-body p-4">
-                <h2 class="card-title text-center mb-3" style="color: #222831;">Welcome to <strong>NE Exchange Rate</strong></h2>
-                <p class="card-text text-center text-muted mb-4">Please log in to continue</p>
+    <div class="col-11 col-sm-5 co-md-6 col-lg-4 mx-auto">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h2 class="card-title text-center fs-5 mb-4">Sign up to <strong>NE Exchange Rate</strong></h2>
 
-                <form id="login-form">
-                @csrf
+                <form id="register-form">
+                    @csrf
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-3 border-0 shadow-sm" id="username" name="email"
-                            placeholder="Username or email">
-                        <label for="username" class="text-secondary">email</label>
+                        <input type="text" class="form-control" id="fullname" name="name" placeholder="">
+                        <label for="fullname">Fullname</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
+                            placeholder="">
+                        <label for="password_confirmation">Re-type password</label>
                     </div>
 
-                    <div class="form-floating mb-4">
-                        <input type="password" class="form-control rounded-3 border-0 shadow-sm" id="password" name="password"
-                            placeholder="Password">
-                        <label for="password" class="text-secondary">Password</label>
-                    </div>
+                    <p class="text-muted text-center">By continuing you agree to our <a href="">Terms</a> and <a
+                            href="">Privacy Policy</a>
+                    </p>
 
-                    <div class="d-grid">
-                        <button type="submit" class="btn rounded-pill btn-lg text-white"
-                            style="background-color: #1abb0f;">Sign in</button>
-                    </div>
+                    <button type="submit" class="btn text-light w-100"
+                        style="background-color: #1abb0f; border-radius: 50px;">
+                        Sign up
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 
-        <script>
+    <script>
         $(document).ready(() => {
-            handleLogin();
+            handleRegister();
         });
 
-        function handleLogin() {
-            $('#login-form').on('submit', async function(e) {
+        function handleRegister() {
+            $('#register-form').on('submit', async function(e) {
                 e.preventDefault();
 
                 // $('input[name="name"], input[name="email"], input[name="password"], input[name="password_confirmation"]').on('input', () =>{
@@ -55,7 +65,7 @@
                 }, {});
 
                 try {
-                    const response = await fetch('/login', {
+                    const response = await fetch('/register', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -105,7 +115,4 @@
             })
         }
     </script>
-
-
-
 @endsection
