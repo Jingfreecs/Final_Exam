@@ -2,7 +2,7 @@
 
 @section('title', 'Register - NE Exchange Rate')
 
-@section('link', 'Sign in')
+@section('link', 'Sign up')
 
 @section('main-content')
     <div class="col-11 col-sm-5 co-md-6 col-lg-4 mx-auto">

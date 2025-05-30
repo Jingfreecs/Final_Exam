@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap-5.3.2-dist/css/bootstrap.min.css') }}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
@@ -74,7 +72,6 @@
             margin-top: 20px;
         }
     </style>
-    <title>Document</title>
 </head>
 <body>
     <div class="container">
@@ -102,7 +99,7 @@
             <div class="col-md-4">
                 <div class="currency-cards">
                     <h4>Select Currency</h4>
-                    <div class="currency-card" data-currency="usd">
+                    <div class="currency-card" data-currency="USD">
                         <img src="https://flagcdn.com/w40/us.png" alt="US Flag"> USD
                     </div>
                     <div class="currency-card" data-currency="EUR">
@@ -113,6 +110,9 @@
                     </div>
                     <div class="currency-card" data-currency="AUD">
                         <img src="https://flagcdn.com/w40/au.png" alt="Australia Flag"> AUD
+                    </div>
+                    <div class="currency-card" data-currency="PHP">
+                        <img src="https://flagcdn.com/w40/ph.png" alt="Philippines Flag"> PHP
                     </div>
                     <div class="currency-card" data-currency="AFN">
                         <img src="https://flagcdn.com/w40/af.png" alt="Afghanistan Flag"> AFN
@@ -164,7 +164,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -179,13 +178,12 @@
                 source.onmessage = function(event) {
                     const data = JSON.parse(event.data);
 
-                    if (data.result != 'success') {
+                    if (data.result !== 'success') {
                         $('#exchangeTableBody').html('<tr><td colspan="2">Error fetching data</td></tr>');
                         source.close();
                     } else {
                         updateTable(data.rates);
                         updateLastUpdateTime(data.lastUpdated);
-
                     }
                 };
 
@@ -201,11 +199,11 @@
 
                 for (const [currency, rate] of Object.entries(rates)) {
                     tableBody.append(`
-                <tr>
-                    <td>${currency}</td>
-                    <td>${rate.toFixed(2)}</td>
-                </tr>
-            `);
+                        <tr>
+                            <td>${currency}</td>
+                            <td>${rate.toFixed(2)}</td>
+                        </tr>
+                    `);
                 }
             }
 
@@ -214,13 +212,12 @@
             }
 
             $('.currency-card').click(function() {
-                const selectedCurrency = $(this).data('currency');
+                const selectedCurrency = $(this).data('currency').toUpperCase();
+                console.log(`Fetching exchange rates for: ${selectedCurrency}`);
 
-                // Mark the selected card as active
                 $('.currency-card').removeClass('active');
                 $(this).addClass('active');
 
-                // Start SSE for the selected currency
                 startSSE(selectedCurrency);
             });
 
@@ -231,8 +228,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
