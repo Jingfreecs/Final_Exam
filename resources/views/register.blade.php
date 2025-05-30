@@ -91,7 +91,7 @@
             <input type="text" name="surname" placeholder="Surname" required>
             <input type="date" name="date_of_birth" required>
             <select name="gender" required>
-                <option value="">Select Gender</option>
+                <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
