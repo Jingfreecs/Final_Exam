@@ -18,4 +18,8 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
