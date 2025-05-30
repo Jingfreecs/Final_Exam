@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CurrencyConverterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -14,15 +15,17 @@ Route::get('/login', function () {
 Route::post('/login', [LoginController::class, 'login'])->name('login.store');
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
-Route::get('/dashboard', function () {
-    return view('pages.authenticated.dashboard');
-})->name('dashboard.index');
-
 Route::get('/register', function(){
     return view('pages.auth.register');
 });
 
 Route::post('/register', [UserController::class, 'store'])
     ->name('user.store');
+
+Route::controller(CurrencyConverterController::class)->prefix('currency-converter')->group(function () {
+    Route::view('/', 'currencyConverter.index')->name('dashboard.index');
+    Route::get('exchange-rate', 'fetchExchangeRate');
+    Route::get('sse',  'sse');
+
+});
+
