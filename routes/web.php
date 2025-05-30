@@ -17,7 +17,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.store');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('/dashboard', function () {
-    return view('layout.dashboard');
+    return view('pages.authenticated.dashboard');
 })->name('dashboard.index');
 
 Route::get('/register', function(){
