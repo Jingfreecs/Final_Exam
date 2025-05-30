@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-light fw-medium" href="#">@yield('link')</a>
+                        <a class="nav-link active text-light fw-medium" href='/register'>@yield('link')</a>
                     </li>
                 </ul>
             </div>
