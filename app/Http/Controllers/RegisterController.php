@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
     public function showRegisterForm(){
         return view('register.index');
@@ -33,7 +33,7 @@ class AuthController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        Auth::login($user);
+        auth::login($user);
         return redirect()->route('dashboard.index')->with('success', 'You have successfully registered');
     }
 }
